@@ -2,6 +2,7 @@ const Koa =  require('koa');
 const mongoose = require('mongoose');
 const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
+require('dotenv/config');
 
 const app = new Koa();
 
@@ -9,7 +10,7 @@ app.use(cors());
 app.use(bodyParser());
 
 const PORT = 3000 || process.env.PORT;
-const MONGODB = "mongodb+srv://admin:admin@cluster0.ouwfw.mongodb.net/Test_DB?retryWrites=true&w=majority";
+const MONGODB = process.env.MONGODB_URL;
 
 mongoose.connect(MONGODB,{
     useNewUrlParser:true,
